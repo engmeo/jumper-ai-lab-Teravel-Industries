@@ -1,1 +1,12 @@
-{"buildCommand":"npm run build","outputDirectory":"dist"}
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "*": false
+    }
+  },
+  "framework": "vite",
+  "installCommand": "npm ci"
+}

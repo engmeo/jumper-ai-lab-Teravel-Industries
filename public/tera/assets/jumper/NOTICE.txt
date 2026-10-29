@@ -1,0 +1,6 @@
+Jumper
+Copyright 2026 KingKong Robotics.
+Apache-2.0; see LICENSE.txt.
+Derived from the user-supplied Jumper visual STL meshes and URDF.
+Modified for Teravel: clustered/indexed geometry, compressed binary, white/purple/mint materials and browser animation.
+URDF anchors and axes retained; three display limits reconciled with supplied jumper.xml.
