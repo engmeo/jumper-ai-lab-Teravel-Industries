@@ -1,10 +1,10 @@
 # Jumper AI Lab — Sơ đồ công việc và hướng dẫn 15 vị trí
 
-> Bản nháp tài liệu để đưa vào Git. Chưa tự động push hoặc deploy.
+> Tài liệu phân công công việc cho dự án Jumper AI Lab.
 
-## Sơ đồ công việc
+## 1. Sơ đồ công việc
 
-Sơ đồ dưới đây mô tả luồng phụ thuộc giữa các nhóm công việc. Để mở hướng dẫn của từng vị trí, hãy sử dụng danh sách liên kết bên dưới sơ đồ.
+Sơ đồ mô tả luồng phụ thuộc giữa các nhóm. Có thể bấm vào từng ô để mở hướng dẫn tương ứng; nếu liên kết trong sơ đồ không hoạt động, sử dụng danh sách liên kết ở phần 2 và phần 3.
 
 ```mermaid
 flowchart TD
@@ -27,11 +27,19 @@ flowchart TD
     D --> F
     E --> F
     F --> G --> H --> I
+
+    click A "docs/roles/01-dieu-phoi-kien-truc.md" "Mở hướng dẫn vị trí 01"
+    click B "docs/roles/10-sandbox-mo-phong.md" "Mở hướng dẫn vị trí 10"
+    click C "docs/roles/02-thu-thap-du-lieu.md" "Mở hướng dẫn vị trí 02"
+    click D "docs/roles/06-baseline-ai-ml.md" "Mở hướng dẫn vị trí 06"
+    click E "docs/roles/12-benchmark-danh-gia.md" "Mở hướng dẫn vị trí 12"
+    click F "docs/roles/14-dong-goi-skill-ci.md" "Mở hướng dẫn vị trí 14"
+    click G "docs/roles/15-tich-hop-phan-cung-an-toan.md" "Mở hướng dẫn vị trí 15"
+    click H "docs/roles/15-tich-hop-phan-cung-an-toan.md" "Mở hướng dẫn vị trí 15"
+    click I "docs/roles/14-dong-goi-skill-ci.md" "Mở hướng dẫn bàn giao"
 ```
 
-**Lưu ý:** Sơ đồ dùng để xem luồng công việc. Hãy dùng danh sách liên kết bên dưới để mở từng hướng dẫn.
-
-## Danh sách 15 hướng dẫn công việc
+## 2. Danh sách 15 hướng dẫn công việc
 
 1. [Điều phối dự án / Kiến trúc hệ thống](docs/roles/01-dieu-phoi-kien-truc.md) — WS0
 2. [Kỹ sư thu thập dữ liệu](docs/roles/02-thu-thap-du-lieu.md) — WS1
@@ -49,7 +57,7 @@ flowchart TD
 14. [Kỹ sư đóng gói kỹ năng và CI](docs/roles/14-dong-goi-skill-ci.md) — WS5
 15. [Kỹ sư tích hợp phần cứng và an toàn](docs/roles/15-tich-hop-phan-cung-an-toan.md) — WS5
 
-## Hướng dẫn theo nhóm công việc
+## 3. Hướng dẫn theo nhóm công việc
 
 - [WS0 — Điều phối dự án / Kiến trúc hệ thống](docs/roles/01-dieu-phoi-kien-truc.md)
 - [WS1 — Thu thập dữ liệu](docs/roles/02-thu-thap-du-lieu.md)
@@ -60,44 +68,55 @@ flowchart TD
 - [Tích hợp phần cứng và an toàn](docs/roles/15-tich-hop-phan-cung-an-toan.md)
 - [Xem 5 Workstream và sơ đồ phụ thuộc](docs/WORKSTREAMS.md)
 
-## Quy tắc làm việc chung
+## 4. Quy tắc làm việc chung
 
 - Không ghi là hoàn thành nếu chưa chạy hoặc chưa kiểm tra được.
-- Không tự giả định một tính năng có sẵn trong Jumper; xác minh theo repository và tài liệu thực tế.
+- Không tự giả định một tính năng có sẵn trong Jumper; cần xác minh theo repository và tài liệu thực tế.
 - Video quan sát không tự động chứa lệnh điều khiển, mô-men xoắn hay trạng thái cảm biến.
 - Công việc cần robot thật phải được đánh dấu **chờ phần cứng**; không thay kiểm thử thực tế bằng kết quả mô phỏng.
-- Mỗi thay đổi cần có mô tả, cách kiểm tra và bằng chứng; không commit khóa API, mật khẩu hoặc dữ liệu riêng tư.
+- Mỗi thay đổi cần có mô tả, cách kiểm tra và bằng chứng.
+- Không commit khóa API, mật khẩu hoặc dữ liệu riêng tư.
 
-## Cách cập nhật GitHub bằng PowerShell
+## 5. Cập nhật GitHub bằng PowerShell
 
 Mở PowerShell tại thư mục repository `jumper-ai-lab-Teravel-Industries`.
 
-```powershell
-# 1. Kiểm tra thay đổi
-git status
+Kiểm tra thay đổi:
 
-# 2. Xem nội dung README đã sửa
+```powershell
+git status
 git diff --check
 git diff -- README.md
-
-# 3. Chỉ thêm README sau khi đã xem lại
-git add README.md
-
-# 4. Kiểm tra nội dung sẽ commit
-git diff --cached --stat
-git diff --cached
-
-# 5. Chỉ chạy khi đã xác nhận nội dung đúng
-git commit -m "Fix README workflow navigation"
 ```
 
-**Chưa chạy `git push` cho đến khi m xác nhận muốn cập nhật GitHub.** Nếu repository đang kết nối Vercel và bật tự động triển khai, push có thể kích hoạt deploy.
+Nếu nội dung đã đúng, thêm và kiểm tra README:
 
-Nếu cần đưa tài liệu từ một thư mục khác vào repository, hãy sao lưu trước và kiểm tra đường dẫn nguồn thực tế. Không chạy lệnh sao chép mẫu với đường dẫn `C:\DUONG_DAN` chưa được thay thế.
+```powershell
+git add README.md
+git diff --cached --check
+git diff --cached --stat
+git diff --cached
+```
 
-## Ghi chú bảo mật
+Sau khi xác nhận bản thay đổi đã sẵn sàng, commit:
 
-- Dữ liệu tài khoản và nhiệm vụ được lưu ở Supabase, không nên coi RAM của Vercel là nơi lưu trữ lâu dài.
+```powershell
+git commit -m "Restore Mermaid diagram links"
+```
+
+Chỉ đẩy lên GitHub khi đã sẵn sàng cập nhật repository:
+
+```powershell
+git push origin main
+```
+
+**Lưu ý:** Nếu repository kết nối Vercel và bật tự động triển khai, lệnh `git push` có thể kích hoạt deploy. Không push nếu chưa sẵn sàng triển khai.
+
+Nếu cần sao chép tài liệu từ một thư mục khác, hãy kiểm tra đường dẫn nguồn thực tế trước khi dùng `Copy-Item`. Không chạy lệnh với đường dẫn mẫu chưa được thay thế.
+
+## 6. Ghi chú bảo mật
+
+- Dữ liệu tài khoản và nhiệm vụ được lưu ở Supabase; không nên coi RAM của Vercel là nơi lưu trữ lâu dài.
 - Gói miễn phí có giới hạn và chính sách có thể thay đổi; kiểm tra thông tin hiện hành của Supabase và Vercel.
 - `SUPABASE_SERVICE_ROLE_KEY` chỉ được đặt trong biến môi trường phía server. Không đặt khóa này trong biến `VITE_*` hoặc commit file `.env`.
 - Trước khi sử dụng dữ liệu nhạy cảm, cần kiểm tra RLS, quyền truy cập và sao lưu.
