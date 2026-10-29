@@ -28,15 +28,17 @@ flowchart TD
     E --> F
     F --> G --> H --> I
 
-    click A "docs/roles/01-dieu-phoi-kien-truc.md" "Mở hướng dẫn vị trí 01"
-    click B "docs/roles/10-sandbox-mo-phong.md" "Mở hướng dẫn vị trí 10"
-    click C "docs/roles/02-thu-thap-du-lieu.md" "Mở hướng dẫn vị trí 02"
-    click D "docs/roles/06-baseline-ai-ml.md" "Mở hướng dẫn vị trí 06"
-    click E "docs/roles/12-benchmark-danh-gia.md" "Mở hướng dẫn vị trí 12"
-    click F "docs/roles/14-dong-goi-skill-ci.md" "Mở hướng dẫn vị trí 14"
-    click G "docs/roles/15-tich-hop-phan-cung-an-toan.md" "Mở hướng dẫn vị trí 15"
-    click H "docs/roles/15-tich-hop-phan-cung-an-toan.md" "Mở hướng dẫn vị trí 15"
-    click I "docs/roles/14-dong-goi-skill-ci.md" "Mở hướng dẫn bàn giao"
+    
+    click A "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/01-dieu-phoi-kien-truc.md" "Mở hướng dẫn vị trí 01"
+    click B "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/10-sandbox-mo-phong.md" "Mở hướng dẫn vị trí 10"
+    click C "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/02-thu-thap-du-lieu.md" "Mở hướng dẫn vị trí 02"
+    click D "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/06-baseline-ai-ml.md" "Mở hướng dẫn vị trí 06"
+    click E "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/12-benchmark-danh-gia.md" "Mở hướng dẫn vị trí 12"
+    click F "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/14-dong-goi-skill-ci.md" "Mở hướng dẫn vị trí 14"
+    click G "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/15-tich-hop-phan-cung-an-toan.md" "Mở hướng dẫn vị trí 15"
+    click H "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/15-tich-hop-phan-cung-an-toan.md" "Mở hướng dẫn vị trí 15"
+    click I "https://github.com/engmeo/jumper-ai-lab-Teravel-Industries/blob/main/docs/roles/14-dong-goi-skill-ci.md" "Mở hướng dẫn bàn giao"
+
 ```
 
 ## 2. Danh sách 15 hướng dẫn công việc
