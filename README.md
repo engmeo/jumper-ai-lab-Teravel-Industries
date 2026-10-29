@@ -56,6 +56,7 @@ Nếu kết quả báo `UPDATE 0`, đăng nhập user đã được tạo chưa 
 - E — Chuẩn bị triển khai → Định dạng đóng gói, kiểm tra tương thích, checklist an toàn.
 
 ## Notes / security
+Test automatic deployment
 
 - Dữ liệu không nằm trong RAM của Vercel: tài khoản và nhiệm vụ được lưu ở Supabase. Vì vậy vẫn còn sau khi deploy lại, miễn là project/database còn tồn tại.
 - Gói miễn phí có giới hạn và chính sách ngủ/tạm dừng có thể thay đổi; kiểm tra trang giá hiện hành của Supabase/Vercel.
