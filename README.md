@@ -99,4 +99,6 @@ git push origin main
 Thay `C:\DUONG_DAN\jumper-task-docs` bằng đường dẫn thật sau khi giải nén. Nếu repo dùng nhánh khác `main`, thay tên nhánh tương ứng.
 
 **Lưu ý:** `git push` có thể kích hoạt Vercel deploy nếu repo đang bật triển khai tự động. Chỉ push khi đã sẵn sàng deploy.
+## Luồng công việc chính
 
+[Xem 5 Workstream và sơ đồ phụ thuộc](docs/WORKSTREAMS.md)
