@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useId, useRef, useState } from 'react';
 import { Moon, Sun, Monitor } from 'lucide-react';
 
 const ThemeContext = createContext(null);
@@ -22,8 +22,21 @@ export function ThemeProvider({ children }) {
 }
 export function ThemeSwitch() {
   const { theme, setTheme } = useContext(ThemeContext);
+  const [open,setOpen] = useState(false);
+  const root=useRef(null), trigger=useRef(null), panelId=useId();
+  const modes=[['light','Sáng',Sun],['dark','Tối',Moon],['system','Theo hệ thống',Monitor]];
   const Icon = theme === 'dark' ? Moon : theme === 'light' ? Sun : Monitor;
-  return <label className="theme-switch"><Icon size={17} aria-hidden="true"/><span className="sr-only">Giao diện</span><select aria-label="Giao diện" value={theme} onChange={e=>setTheme(e.target.value)}><option value="light">Sáng</option><option value="dark">Tối</option><option value="system">Hệ thống</option></select></label>;
+  const label=`Giao diện: ${modes.find(([value])=>value===theme)[1]}. Đổi giao diện`;
+  useEffect(()=>{
+    if(!open)return;
+    const close=e=>{if(!root.current?.contains(e.target))setOpen(false);};
+    document.addEventListener('pointerdown',close);
+    return()=>document.removeEventListener('pointerdown',close);
+  },[open]);
+  return <div className="theme-picker" ref={root} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setOpen(false);}} onKeyDown={e=>{if(e.key==='Escape'){setOpen(false);trigger.current?.focus();}}}>
+    <button ref={trigger} className="icon-button icon-hint theme-toggle" aria-label={label} data-tooltip={label} aria-expanded={open} aria-controls={panelId} onClick={()=>setOpen(!open)}><Icon size={20} aria-hidden="true"/></button>
+    {open&&<div id={panelId} className="theme-options" role="group" aria-label="Chọn giao diện">{modes.map(([value,name,ModeIcon])=><button key={value} type="button" className="icon-button icon-hint" aria-label={name} data-tooltip={name} aria-pressed={theme===value} onClick={()=>{setTheme(value);setOpen(false);trigger.current?.focus();}}><ModeIcon size={20} aria-hidden="true"/></button>)}</div>}
+  </div>;
 }
 export function Brand({ compact=false }) {
   return <a className="brand" href="#/" aria-label="Teravel Industries — Trang chủ"><span className="logo-mark" aria-hidden="true">T</span><span><b>Teravel{!compact && ' Industries'}</b><small>{compact ? 'INDUSTRIES' : 'JUMPER AI LAB'}</small></span></a>;

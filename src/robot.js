@@ -11,7 +11,12 @@ async function loadJumper() {
   if (!manifestResponse.ok || !meshResponse.ok) throw new Error('Không tải được mô hình Jumper.');
   const data = await manifestResponse.json();
   const packed = await meshResponse.arrayBuffer();
-  const buffer = await new Response(new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+  // Vite sends Content-Encoding: gzip, so fetch may already have decoded it.
+  // Production can serve the same file as a raw gzip asset instead.
+  const header = new Uint8Array(packed,0,Math.min(2,packed.byteLength));
+  const buffer = header[0]===0x1f && header[1]===0x8b
+    ? await new Response(new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
+    : packed;
   if (buffer.byteLength !== data.optimization.binaryBytes) throw new Error('Dữ liệu mô hình chưa đầy đủ.');
   const white = new THREE.MeshStandardMaterial({color:0xf4f2ff, roughness:.36, metalness:.18});
   const purple = new THREE.MeshStandardMaterial({color:0x6955ce, roughness:.36, metalness:.24});
@@ -88,7 +93,7 @@ export async function mountRobot(container,{paused,onReady,onError,onClaw}) {
     renderer.domElement.setAttribute('aria-label','Cua robot Jumper 3D màu trắng, tím và mint. Kéo để xoay mọi phía, cuộn hoặc chụm để zoom, bấm càng để mở đóng.');
     container.append(renderer.domElement);
     model = await loadJumper();
-  } catch(error) { renderer?.dispose(); onError(error); return null; }
+  } catch(error) { renderer?.dispose(); renderer?.domElement.remove(); console.error('Jumper model failed to load:',error); onError(error); return null; }
   const scene = new THREE.Scene(); scene.add(model.robot);
   scene.add(new THREE.HemisphereLight(0xf5f2ff,0x8e85b6,2.7));
   for (const [color,intensity,position] of [[0xfff9ee,3.4,[-4,6,6]],[0xb5b0ff,2,[4,3,-4]],[0xc5fff1,1.3,[-3,-3,2]]]) {
